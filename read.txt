@@ -1,3 +1,0 @@
-remove file: read.txt
-personal PC
-notebook
