@@ -149,8 +149,13 @@
 # Cmake
 ## 基本语法
 ```
+find_package(OpenCV REQUIRED)
+find_package(PCL REQUIRED)
 #添加头文件目录
-include_directories()
+include_directories(
+    ${OpenCV_INCLUDE_DIRS}
+    ${PCL_INCLUDE_DIRS}
+)
 #添加库目录
 link_directories()
 #添加宏定义
@@ -158,7 +163,10 @@ add_definitions(-D EXPORT)
 #添加源文件
 aux_source_directory(. SRC_LIST)
 #添加库
-add_library()# STATIC SHARED 
+add_library(${PROJECT_NAME} STATIC/SHARED  ${SRCS})
+#添加可执行程序
+add_executable(${PROJECT_NAME} ${SRCS})
+target_link_libraries(${PROJECT_NAME} ${PCL_LIBRARIES} ${OpenCV_LIBS})
 ```
 
 
